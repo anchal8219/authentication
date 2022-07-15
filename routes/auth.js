@@ -1,4 +1,5 @@
 const router = require('express').Router();
+//const mongoose = require('mongoose');
 const User = require('../model/User');
 const jwt =  require('jsonwebtoken');
 const bcrypt = require('bcrypt');
@@ -33,7 +34,7 @@ const hashedPassword = await bcrypt.hash(req.body.password,salt);
         password: hashedPassword
     });
     user.save();
-    res.send({user: user._id});
+    res.send(user);
 });
 
 //login
